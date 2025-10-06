@@ -1,0 +1,47 @@
+# Kubernetes
+
+## element principal :
+ - **Node** : 
+  - Une machine (physique ou virtuelle) dans le cluster.
+  - kubelet (agent qui communique avec le control plane).
+  - kube-proxy (gestion du réseau)
+  - Un runtime de conteneur (ex: Docker, containerd).
+ - **Pod**:
+   - Unité de base de déploiement dans Kubernetes.
+   - Un Pod peut contenir un ou plusieurs conteneurs (souvent un seul).
+   - Tous les conteneurs d’un même Pod partagent le même réseau, le même stockage et le même cycle de vie.
+   
+ -  Service:
+   - Fournit une adresse IP stable et un nom DNS pour accéder à un ensemble de Pods.
+   - Permet de découpler les consommateurs des fournisseurs de services.
+   - Types courants :
+     - ClusterIP : Service interne au cluster.
+     - NodePort : Expose le service sur un port sur chaque node.
+     - LoadBalancer : Service avec un load balancer externe.
+     - ExternalName : Mappe un nom de service à un nom de domaine externe.
+ - Deployment :
+   - Définit l’état souhaité pour les Pods et les ReplicaSets.
+   - Gère les mises à jour et les rollbacks automatiques.
+   - Permet de spécifier le nombre de répliques souhaitées.
+   - Kubernetes s’assure que cet état est toujours respecté.
+ - **ReplicaSet** :
+   - Garantit que le nombre souhaité de Pods est toujours en cours d’exécution.
+   - Il surveille les Pods et les redémarre si nécessaire.
+ - Namespace :
+   - Permet de segmenter un cluster en environnements virtuels
+   - Utile pour l’isolation, la gestion des ressources et les politiques de sécurité.
+ - ConfigMap :
+   - stocke des données de configuration non sensibles
+ - Secret:
+   -  stocke des données sensibles de façon encodée en base64 (pas chiffrée par défaut, mais peut l’être avec des solutions externes).
+ - **Volume**:
+   - Permet le stockage persistant des données, indépendamment du cycle de vie d’un Pod.
+   - Un PersistentVolume (PV) est une ressource de stockage dans le cluster.
+   - Un PersistentVolumeClaim (PVC) est une demande de stockage par un utilisateur.
+ - **Ingress** :
+   - Gère l’accès externe aux services
+   - Agit comme un reverse proxy ou un routeur.
+   - Nécessite un contrôleur Ingress.
+ - **StatefulSet**:
+   - Similaire à un Deployment, mais pour les applications stateful.
+   - 
